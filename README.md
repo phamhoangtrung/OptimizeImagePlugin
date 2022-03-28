@@ -3,6 +3,7 @@
 ```js
 module.exports = {
   // ...
+  // set loader resolver to your custom
   resolveLoader: {
     modules: ["node_modules", "build-util/loader"],
   },
@@ -16,6 +17,12 @@ module.exports = {
     ],
   },
 };
+```
+
+```js
+  // Get API key: https://tinypng.com/developers
+  // build-util/loader/tinypng-loader.js (line 4)
+  tinify.key = process.env.TINIFY_KEY; // change this to your API key
 ```
 
 ```npm
