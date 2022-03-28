@@ -8,6 +8,8 @@ function bytesToMegabytes(bytes) {
 }
 
 module.exports = function (sourceStr) {
+  // https://webpack.js.org/api/loaders#asynchronous-loaders
+  // https://webpack.js.org/api/loaders/#thiscallback
   const callback = this.async();
 
   const maxSize = 5; //MB
@@ -19,6 +21,7 @@ module.exports = function (sourceStr) {
     return callback(new Error(`${fileName} is greater than ${maxSize}MB`), null);
   }
 
+  // https://tinypng.com/developers/reference/nodejs#compressing-images
   return tinify.fromBuffer(sourceStr).toBuffer(callback);
 };
 
