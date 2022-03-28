@@ -1,7 +1,8 @@
 const tinify = require("tinify");
 
 // Get API key: https://tinypng.com/developers
-tinify.key = process.env.TINIFY_KEY;
+// tinify.key = process.env.TINIFY_KEY;
+tinify.key = "QWP40jkWrBvZ0P2kQ9h1gRSl3HLTCW96";
 
 function bytesToMegabytes(bytes) {
   return bytes * Math.pow(2, -20);
