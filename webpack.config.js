@@ -8,8 +8,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jpg$/,
-        use: ["file-loader", "tinypng-loader"],
+        test: /\.(jpeg|jpg|png|webp)/,
+        use: [{ loader: "file-loader" }, { loader: "tinypng-loader", options: { limit: 5000000 } }],
       },
     ],
   },

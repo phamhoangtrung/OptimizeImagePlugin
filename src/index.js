@@ -1,2 +1,7 @@
-import wallpaper from "./assets/wallpapersden.com_no-man-s-sky-game_3440x2160.jpg";
-console.log(wallpaper);
+import wallpaper1 from "./assets/wp1.webp";
+import wallpaper2 from "./assets/wp2.jpg";
+import wallpaper3 from "./assets/wp3.png";
+
+console.log(wallpaper1);
+console.log(wallpaper2);
+console.log(wallpaper3);
