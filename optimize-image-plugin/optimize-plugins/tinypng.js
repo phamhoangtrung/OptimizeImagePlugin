@@ -1,4 +1,4 @@
-const tinify = require("tinify");
+const tinify = require('tinify');
 
 class TinyPNGPlugin {
   constructor(key) {

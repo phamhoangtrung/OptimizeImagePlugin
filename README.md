@@ -3,32 +3,28 @@
 ```js
 module.exports = {
   // ...
-  // set loader resolver to your custom
-  resolveLoader: {
-    modules: ["node_modules", "build-util/loader"],
-  },
-  module: {
-    rules: [
-      //...
-      {
-        test: /\.jpg$/,
-        use: ["file-loader", "tinypng-loader"], // use it first
-      },
-    ],
-  },
+  plugins: [
+    new OptimizeImagePlugin({
+      // build-in optimize plugin
+      // required
+      // can be customized to use other minify libs
+      optimizePlugin: new TinyPNGPlugin(tinifyKey),
+
+      // build-in transform plugin
+      // optional
+      // can be customized to transform into PNG or more
+      transformPlugin: new WebpConverterPlugin('webp'),
+    }),
+  ],
 };
 ```
 
-```js
-  // Get API key: https://tinypng.com/developers
-  // build-util/loader/tinypng-loader.js (line 4)
-  tinify.key = process.env.TINIFY_KEY; // change this to your API key
-```
+### Demo
 
 ```npm
   // yarn command
-  yarn start
+  yarn build
 
   // npm command
-  npm start
+  npm run build
 ```

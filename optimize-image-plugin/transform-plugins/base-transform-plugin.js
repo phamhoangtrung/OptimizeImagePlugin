@@ -6,7 +6,7 @@ class BaseTransformPlugin {
     if (this.supportTypeReg.test(mediaType)) {
       this.mediaType = mediaType;
     } else {
-      throw new TypeError("Invalid media type");
+      throw new TypeError('Invalid media type');
     }
   }
 }
