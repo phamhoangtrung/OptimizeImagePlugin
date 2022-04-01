@@ -4,7 +4,11 @@ const BaseTransformationPlugin = require('./BaseTransformationPlugin');
 let imgConvert = require('image-convert');
 
 class ImageConvertPlugin extends BaseTransformationPlugin {
+  supportedType = ['png', 'jpg'];
   constructor(mediaType) {
+    if (!this.supportedType.includes(mediaType)) {
+      throw TypeError("Only support 'png' or 'jpg'");
+    }
     super({ mediaType });
   }
 

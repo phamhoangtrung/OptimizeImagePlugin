@@ -1,4 +1,4 @@
-## Only use with: .png, .jpeg, .webp
+# OptimizeImagePlugin
 
 ```js
 module.exports = {
@@ -21,7 +21,19 @@ module.exports = {
 };
 ```
 
-### Define your own custom plugin
+## Build-in Plugin
+
+```js
+// optimizePlugin
+new TinyPNGPlugin({ key: tinifyKey });
+new ImageminPlugin();
+
+//transformPlugin
+new ImageConvertPlugin('png'); // only support png and jpg
+new WebpConverterPlugin();
+```
+
+## Define your own custom (optimize | transform) plugin
 
 ```ts
 const { RawSource } = require('webpack-sources');
@@ -31,13 +43,13 @@ interface OptimizationPlugin {
   optimize: (rawSource: RawSource) => Promise<Buffer>;
 }
 
-// optimizePlugin interface sample
+// transformPlugin interface sample
 interface TransformationPlugin {
   transform: (rawSource: RawSource) => Promise<Buffer>;
 }
 ```
 
-### Demo
+## Demo
 
 ```npm
   // yarn command
