@@ -1,4 +1,4 @@
-const { OptimizeImagePlugin, WebpConverterPlugin, TinyPNGPlugin } = require('./optimize-image-plugin');
+const { OptimizeImagePlugin, WebpConverterPlugin, TinyPNGPlugin } = require('./OptimizeImagePlugin');
 const tinifyKey = 'QWP40jkWrBvZ0P2kQ9h1gRSl3HLTCW96';
 
 module.exports = {
@@ -15,10 +15,11 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
     new OptimizeImagePlugin({
-      optimizePlugin: new TinyPNGPlugin(tinifyKey),
-      transformPlugin: new WebpConverterPlugin('webp'),
+      optimizePlugin: new TinyPNGPlugin({ key: tinifyKey }),
+      transformPlugin: new WebpConverterPlugin(),
     }),
   ],
 };
