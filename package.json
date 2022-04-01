@@ -1,14 +1,13 @@
 {
-  "name": "tiny-webpack-loader",
+  "name": "optimize-image-plugin",
   "version": "1.0.0",
-  "description": "",
+  "description": "Optimize image asset with your custom plugin",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "node ./src/index.js"
+    "demo": "webpack",
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["webpack","optimize","plugin","tinify","webp","image-convert"],
+  "author": "https://github.com/phamhoangtrung",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.8",
