@@ -4,7 +4,7 @@
   "description": "Optimize image asset with your custom plugin",
   "main": "index.js",
   "scripts": {
-    "demo": "webpack",
+    "demo": "webpack"
   },
   "keywords": ["webpack","optimize","plugin","tinify","webp","image-convert"],
   "author": "https://github.com/phamhoangtrung",

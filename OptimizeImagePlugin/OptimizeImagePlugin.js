@@ -1,13 +1,16 @@
 const { RawSource } = require('webpack-sources');
 const { Compilation } = require('webpack');
-const { getMediaInfo, nonSupportType } = require('./util');
+const { getMediaInfo } = require('./util');
 const FA = require('fasy');
 
 class OptimizeImagePlugin {
   name = 'OptimizeImagePlugin';
+  nonSupportType = ['gif'];
   constructor(options = {}) {
     this.optimizePlugin = options.optimizePlugin;
     this.transformPlugin = options.transformPlugin || null;
+    options.nonSupportType && (this.nonSupportType = [...this.nonSupportType, ...options.nonSupportType]);
+    debugger;
   }
 
   apply(compiler) {
@@ -47,7 +50,7 @@ class OptimizeImagePlugin {
     const [assetName, assetsType] = getMediaInfo(pathname);
 
     if (this.transformPlugin.mediaType === assetsType) return;
-    if (nonSupportType.includes(assetsType)) return;
+    if (this.nonSupportType.includes(assetsType)) return;
 
     const buffer = await this.transformPlugin.transform(assetsRawSource, pathname);
     compilation.emitAsset(`${assetName}.${this.transformPlugin.mediaType}`, new RawSource(buffer));

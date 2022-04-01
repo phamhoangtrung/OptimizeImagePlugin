@@ -4,10 +4,8 @@ function getMediaInfo(url) {
 }
 
 const defaultSupportTypeReg = /\.(png|jpe?g|webp)/i;
-const nonSupportType = ['gif'];
 
 module.exports = {
   getMediaInfo,
-  nonSupportType,
   defaultSupportTypeReg,
 };

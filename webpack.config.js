@@ -26,6 +26,7 @@ module.exports = {
     new OptimizeImagePlugin({
       optimizePlugin: new ImageminPlugin(),
       transformPlugin: new ImageConvertPlugin('jpg'),
+      nonSupportType: ['gif2'],
     }),
   ],
 };
