@@ -1,10 +1,10 @@
 const tinify = require('tinify');
-const { defaultSupportTypeReg } = require('../util');
+const BaseOptimizationPlugin = require('./BaseOptimizationPlugin');
 
-class TinyPNGPlugin {
+class TinyPNGPlugin extends BaseOptimizationPlugin {
   constructor(options = {}) {
+    super(options);
     tinify.key = options.key;
-    this.supportTypeReg = options.supportTypeReg || defaultSupportTypeReg;
   }
 
   optimize(rawSource) {

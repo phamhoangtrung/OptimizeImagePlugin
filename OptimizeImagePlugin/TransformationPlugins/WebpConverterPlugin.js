@@ -1,17 +1,16 @@
 const webp = require('webp-converter');
 const path = require('path');
 const { getMediaInfo } = require('../util');
+const BaseTransformationPlugin = require('./BaseTransformationPlugin');
 
-class WebpConverterPlugin {
+class WebpConverterPlugin extends BaseTransformationPlugin {
   constructor() {
-    this.mediaType = 'webp';
+    super({
+      mediaType: 'webp',
+    });
     webp.grant_permission();
   }
 
-  /**
-   * @param {RawSource} rawSource from require('webpack-sources')
-   * @returns {Promise<Buffer>}
-   */
   transform(rawSource, filename) {
     const [_, assetType] = getMediaInfo(filename);
     const buffer = rawSource._value;

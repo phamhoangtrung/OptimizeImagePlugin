@@ -28,12 +28,12 @@ const { RawSource } = require('webpack-sources');
 
 // optimizePlugin interface sample
 interface OptimizationPlugin {
-  optimize: (buffer: RawSource) => Promise<Buffer>;
+  optimize: (rawSource: RawSource) => Promise<Buffer>;
 }
 
 // optimizePlugin interface sample
 interface TransformationPlugin {
-  transform: (buffer: RawSource) => Promise<Buffer>;
+  transform: (rawSource: RawSource) => Promise<Buffer>;
 }
 ```
 

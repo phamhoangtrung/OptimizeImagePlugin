@@ -6,28 +6,29 @@ const FA = require('fasy');
 class OptimizeImagePlugin {
   name = 'OptimizeImagePlugin';
   constructor(options = {}) {
-    this.transformPlugin = options.transformPlugin || null;
     this.optimizePlugin = options.optimizePlugin;
+    this.transformPlugin = options.transformPlugin || null;
   }
 
   apply(compiler) {
     const _this = this;
-
-    compiler.hooks.thisCompilation.tap(_this.name, (compilation) => {
-      compilation.hooks.processAssets.tapPromise(
-        {
-          name: this.name,
-          stage: Compilation.PROCESS_ASSETS_STAGE_ANALYSE,
-        },
-        (rawSource) => {
-          return FA.concurrent.map(([pathname, source]) => {
-            if (!source instanceof RawSource) return;
-            if (!source._valueIsBuffer) return;
-            return _this.transform(source, pathname, compilation);
-          }, Object.entries(rawSource));
-        }
-      );
-    });
+    if (_this.transformPlugin) {
+      compiler.hooks.thisCompilation.tap(_this.name, (compilation) => {
+        compilation.hooks.processAssets.tapPromise(
+          {
+            name: this.name,
+            stage: Compilation.PROCESS_ASSETS_STAGE_ANALYSE,
+          },
+          (rawSource) => {
+            return FA.concurrent.map(([pathname, source]) => {
+              if (!source instanceof RawSource) return;
+              if (!source._valueIsBuffer) return;
+              return _this.transform(source, pathname, compilation);
+            }, Object.entries(rawSource));
+          }
+        );
+      });
+    }
 
     compiler.hooks.afterCompile.tapPromise(_this.name, async (compilation) => {
       const assetsRawSource = this.getValidAssets(compilation);
