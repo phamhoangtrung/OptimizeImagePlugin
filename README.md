@@ -53,8 +53,8 @@ interface TransformationPlugin {
 
 ```npm
   // yarn command
-  yarn build
+  yarn demo
 
   // npm command
-  npm run build
+  npm run demo
 ```
